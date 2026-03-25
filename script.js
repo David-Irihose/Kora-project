@@ -88,3 +88,27 @@ async function searchJobs() {
       '<p style="text-align:center;color:red;">' + message + '</p>';
   }
 }
+// ================= COMPANY FILTER =================
+function fillCompanyDropdown(jobs) {
+  var companySelect = document.getElementById('companyFilter');
+  var companies = [];
+
+  for (var i = 0; i < jobs.length; i++) {
+    var name = jobs[i].company_name || '';
+
+    if (name && companies.indexOf(name) === -1) {
+      companies.push(name);
+    }
+  }
+
+  companies.sort();
+
+  companySelect.innerHTML = '<option value="">All Companies</option>';
+
+  for (var i = 0; i < companies.length; i++) {
+    var option = document.createElement('option');
+    option.value = companies[i];
+    option.textContent = companies[i];
+    companySelect.appendChild(option);
+  }
+}
