@@ -41,3 +41,50 @@ function goToJobsFromHero() {
     searchJobs();
   }
 }
+// ================= FETCH JOBS =================
+async function searchJobs() {
+  var query = document.getElementById('searchInput').value;
+  var resultsDiv = document.getElementById('results');
+
+  if (query === '') {
+    resultsDiv.innerHTML =
+      '<p style="text-align:center;color:#f59e0b;">Please enter a job title.</p>';
+    return;
+  }
+
+  resultsDiv.innerHTML =
+    '<p style="text-align:center;color:#6b7280;">Searching jobs...</p>';
+
+  try {
+    var url =
+      'https://remotive.com/api/remote-jobs?search=' +
+      encodeURIComponent(query);
+
+    var response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error('API Error: ' + response.status);
+    }
+
+    var data = await response.json();
+
+    // Remotive structure
+    allJobs = data.jobs || [];
+
+    fillCompanyDropdown(allJobs);
+    showJobs();
+
+  }
+  catch (error) {
+    let message = '';
+
+    if (error.message.includes('Failed to fetch')) {
+      message = 'No internet connection. Please check your network and try again.';
+    } else {
+      message = 'Something went wrong. Please try again later.';
+    }
+
+    resultsDiv.innerHTML =
+      '<p style="text-align:center;color:red;">' + message + '</p>';
+  }
+}
