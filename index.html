@@ -25,7 +25,94 @@
         <button onclick="goToJobsFromHero()">Search Jobs</button>
       </div>
     </div>
+<div class="section-title">
+      <h2>How This Project Works</h2>
+      <p>Three simple steps to use this app</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon"></div>
+        <h3>Search</h3>
+        <p>Type any job title or skill and hit search to see live listings.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"></div>
+        <h3>Filter</h3>
+        <p>Filter by remote work or company name to narrow down results.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"></div>
+        <h3>Apply</h3>
+        <p>Click "Apply" on any job card and go directly to the listing.</p>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Popular Categories</h2>
+      <p>Job categories covered by this app(Frontend
+        Backend,
+        Data Science,
+        UI/UX Design,
+        DevOps,
+        Product)</p>
+
+
+  </section>
+
+  <section id="page-jobs" class="page">
+
+    <div class="jobs-header">
+      <h2>Browse Jobs</h2>
+      <p>Search and filter remote tech jobs from around the world</p>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Job title or keyword..." />
+
+      <select id="companyFilter">
+        <option value="">All Companies</option>
+      </select>
+      <select id="sortFilter">
+        <option value="">Sort By</option>
+        <option value="title">Job Title (A-Z)</option>
+        <option value="company">Company (A-Z)</option>
+      </select>
+      <button onclick="searchJobs()">Search</button>
+    </div>
+
+    <div id="results" class="results-area">
+      <p class="results-hint">Enter a keyword above to start searching for jobs.</p>
+    </div>
+
+
 </section>
+
+<section id="page-jobs" class="page">
+
+    <div class="jobs-header">
+      <h2>Browse Jobs</h2>
+      <p>Search and filter remote tech jobs from around the world</p>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Job title or keyword..." />
+
+      <select id="companyFilter">
+        <option value="">All Companies</option>
+      </select>
+      <select id="sortFilter">
+        <option value="">Sort By</option>
+        <option value="title">Job Title (A-Z)</option>
+        <option value="company">Company (A-Z)</option>
+      </select>
+      <button onclick="searchJobs()">Search</button>
+    </div>
+
+    <div id="results" class="results-area">
+      <p class="results-hint">Enter a keyword above to start searching for jobs.</p>
+    </div>
+
+  </section>
 
 </body>
 </html>
