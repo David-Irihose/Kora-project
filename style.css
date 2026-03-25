@@ -433,3 +433,12 @@ body {
   font-weight: 600;
   font-size: 1rem;
 }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1e2a67;
+  color: #c5b8f5;
+  font-size: 0.9rem;
+}
