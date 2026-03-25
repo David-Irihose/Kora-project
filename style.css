@@ -309,3 +309,56 @@ body {
 .job-card a:hover {
   background: #5438c0;
 }
+/* ABOUT PAGE */
+.about-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-wrapper h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #2d1b69;
+  margin-bottom: 14px;
+}
+
+.about-wrapper>p {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.about-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.about-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 22px;
+  width: 240px;
+  box-shadow: 0 4px 14px rgba(108, 78, 242, 0.1);
+}
+
+.about-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.about-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d1b69;
+  margin-bottom: 8px;
+}
+
+.about-card p {
+  font-size: 0.88rem;
+  color: #6b7280;
+}
