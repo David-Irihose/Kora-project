@@ -112,3 +112,53 @@ function fillCompanyDropdown(jobs) {
     companySelect.appendChild(option);
   }
 }
+// ================= FILTER + SORT =================
+document.getElementById('companyFilter').addEventListener('change', showJobs);
+document.getElementById('sortFilter').addEventListener('change', showJobs);
+
+function showJobs() {
+  var resultsDiv = document.getElementById('results');
+  var companyFilter = document.getElementById('companyFilter').value;
+  var sortFilter = document.getElementById('sortFilter').value;
+
+  resultsDiv.innerHTML = '';
+
+  if (allJobs.length === 0) {
+    resultsDiv.innerHTML =
+      '<p style="text-align:center;color:#6b7280;">No jobs found.</p>';
+    return;
+  }
+
+  var filtered = [];
+
+  for (var i = 0; i < allJobs.length; i++) {
+    var job = allJobs[i];
+
+    var companyName = job.company_name || 'Unknown';
+
+    var companyOk =
+      companyFilter === '' || companyName === companyFilter;
+
+    if (companyOk) {
+      filtered.push(job);
+    }
+  }
+
+  // SORTING
+  if (sortFilter === 'title') {
+    filtered.sort(function (a, b) {
+      return (a.title || '').localeCompare(b.title || '');
+    });
+  } else if (sortFilter === 'company') {
+    filtered.sort(function (a, b) {
+      return (a.company_name || '').localeCompare(b.company_name || '');
+    });
+  }
+
+  if (filtered.length === 0) {
+    resultsDiv.innerHTML =
+      '<p style="text-align:center;color:#6b7280;">No matching jobs found.</p>';
+    return;
+  }
+
+}
