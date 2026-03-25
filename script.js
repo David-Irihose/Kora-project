@@ -161,4 +161,19 @@ function showJobs() {
     return;
   }
 
+ // DISPLAY JOBS
+  for (var i = 0; i < filtered.length; i++) {
+    var job = filtered[i];
+
+    var card = document.createElement('div');
+    card.classList.add('job-card');
+
+    card.innerHTML =
+      '<h3>' + job.title + '</h3>' +
+      '<p><b>Company:</b> ' + (job.company_name || 'Unknown') + '</p>' +
+      '<p><b>Location:</b> ' + (job.candidate_required_location || 'Remote') + '</p>' +
+      '<a href="' + job.url + '" target="_blank">Apply Now</a>';
+
+    resultsDiv.appendChild(card);
+  }
 }
