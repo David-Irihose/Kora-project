@@ -9,6 +9,8 @@ body {
   background: #f0f4ff;
   color: #1e1e2e;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAVBAR */
@@ -73,6 +75,7 @@ body {
 
 .page.active-page {
   display: block;
+  flex: 1;
 }
 
 /* HOME: HERO */
