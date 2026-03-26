@@ -63,15 +63,17 @@ No API key is required.
     </div>
 
     <div class="section-title">
-      <h2>Popular Categories</h2>
-      <p>Job categories covered by this app(Frontend
-        Backend,
-        Data Science,
-        UI/UX Design,
-        DevOps,
-        Product)</p>
-
-
+      <h2>Popular Job Categories</h2>
+      <p>Click a category below to explore different roles</p>
+    </div>
+    <div class="categories-grid">
+      <div class="category-tag" onclick="searchByCategory('Frontend')">Frontend</div>
+      <div class="category-tag" onclick="searchByCategory('Backend')">Backend</div>
+      <div class="category-tag" onclick="searchByCategory('Fullstack')">Fullstack</div>
+      <div class="category-tag" onclick="searchByCategory('UI/UX Design')">UI/UX Design</div>
+      <div class="category-tag" onclick="searchByCategory('Data Science')">Data Science</div>
+      <div class="category-tag" onclick="searchByCategory('DevOps')">DevOps</div>
+    </div>
   </section>
 
   <section id="page-jobs" class="page">
@@ -99,33 +101,6 @@ No API key is required.
       <p class="results-hint">Enter a keyword above to start searching for jobs.</p>
     </div>
 
-
-  </section>
-
-  <section id="page-jobs" class="page">
-
-    <div class="jobs-header">
-      <h2>Browse Jobs</h2>
-      <p>Search and filter remote tech jobs from around the world</p>
-    </div>
-
-    <div class="filters">
-      <input type="text" id="searchInput" placeholder="Job title or keyword..." />
-
-      <select id="companyFilter">
-        <option value="">All Companies</option>
-      </select>
-      <select id="sortFilter">
-        <option value="">Sort By</option>
-        <option value="title">Job Title (A-Z)</option>
-        <option value="company">Company (A-Z)</option>
-      </select>
-      <button onclick="searchJobs()">Search</button>
-    </div>
-
-    <div id="results" class="results-area">
-      <p class="results-hint">Enter a keyword above to start searching for jobs.</p>
-    </div>
 
   </section>
   <section id="page-about" class="page">
@@ -166,7 +141,7 @@ No API key is required.
         <input type="text" id="contactName" placeholder="Enter your name" required />
 
         <label>Email Address</label>
-        <input type="email" type="email" id="contactEmail" placeholder="you@example.com" required />
+        <input type="email" id="contactEmail" placeholder="you@example.com" required />
 
         <label>Message</label>
         <textarea id="contactMessage" rows="5" placeholder="Write your message here..." required></textarea>
