@@ -70,6 +70,56 @@ async function searchJobs() {
 
     // Remotive structure
     allJobs = data.jobs || [];
+    async function searchJobs() {
+      var query = document.getElementById('searchInput').value;
+      var resultsDiv = document.getElementById('results');
+
+      if (query === '') {
+        resultsDiv.innerHTML =
+          '<p style="text-align:center;color:#f59e0b;">Please enter a job title.</p>';
+        return;
+      }
+
+      resultsDiv.innerHTML =
+        '<p style="text-align:center;color:#6b7280;">Searching jobs...</p>';
+
+      try {
+        var url =
+          'https://remotive.com/api/remote-jobs?search=' +
+          encodeURIComponent(query);
+
+        var response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error('API Error: ' + response.status);
+        }
+
+        var data = await response.json();
+
+        allJobs = data.jobs || [];
+
+        // API zero result
+        if (allJobs.length === 0) {
+          resultsDiv.innerHTML =
+            '<p style="text-align:center;color:#f59e0b;">No jobs found for "' +
+            query + '". Try a different keyword.</p>';
+          return;
+        }
+
+        fillCompanyDropdown(allJobs);
+        showJobs();
+
+      } catch (error) {
+        let message = '';
+        if (error.message.includes('Failed to fetch')) {
+          message = 'No internet connection. Please check your network and try again.';
+        } else {
+          message = 'Something went wrong. Please try again later.';
+        }
+        resultsDiv.innerHTML =
+          '<p style="text-align:center;color:red;">' + message + '</p>';
+      }
+    }
 
     fillCompanyDropdown(allJobs);
     showJobs();
@@ -125,7 +175,7 @@ function showJobs() {
 
   if (allJobs.length === 0) {
     resultsDiv.innerHTML =
-      '<p style="text-align:center;color:#6b7280;">No jobs found.</p>';
+      '<p style="text-align:center;color:#6b7280;">No jobs found. Try a different keyword.</p>';
     return;
   }
 
@@ -157,11 +207,21 @@ function showJobs() {
 
   if (filtered.length === 0) {
     resultsDiv.innerHTML =
-      '<p style="text-align:center;color:#6b7280;">No matching jobs found.</p>';
+      '<p style="text-align:center;color:#6b7280;">No matching jobs found. Try different filters or keywords.</p>';
     return;
   }
 
- // DISPLAY JOBS
+  // Display the number of results found
+  var resultCount = document.createElement('div');
+  resultCount.style.textAlign = 'center';
+  resultCount.style.padding = '10px';
+  resultCount.style.marginBottom = '15px';
+  resultCount.style.fontWeight = '700';
+  resultCount.style.color = '#172e68';
+  resultCount.innerHTML = filtered.length + ' ' + (filtered.length === 1 ? 'job' : 'jobs') + ' found';
+  resultsDiv.appendChild(resultCount);
+
+  // DISPLAY JOBS
   for (var i = 0; i < filtered.length; i++) {
     var job = filtered[i];
 
