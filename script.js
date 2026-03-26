@@ -41,7 +41,7 @@ function goToJobsFromHero() {
     searchJobs();
   }
 }
-// ================= FETCH JOBS =================
+// Main function: fetches jobs from API and displays them
 async function searchJobs() {
   var query = document.getElementById('searchInput').value;
   var resultsDiv = document.getElementById('results');
@@ -62,74 +62,30 @@ async function searchJobs() {
 
     var response = await fetch(url);
 
+    // Handle API response errors (e.g., 404, 500)
     if (!response.ok) {
       throw new Error('API Error: ' + response.status);
     }
 
     var data = await response.json();
-
-    // Remotive structure
     allJobs = data.jobs || [];
-    async function searchJobs() {
-      var query = document.getElementById('searchInput').value;
-      var resultsDiv = document.getElementById('results');
 
-      if (query === '') {
-        resultsDiv.innerHTML =
-          '<p style="text-align:center;color:#f59e0b;">Please enter a job title.</p>';
-        return;
-      }
-
+    if (allJobs.length === 0) {
       resultsDiv.innerHTML =
-        '<p style="text-align:center;color:#6b7280;">Searching jobs...</p>';
-
-      try {
-        var url =
-          'https://remotive.com/api/remote-jobs?search=' +
-          encodeURIComponent(query);
-
-        var response = await fetch(url);
-
-        if (!response.ok) {
-          throw new Error('API Error: ' + response.status);
-        }
-
-        var data = await response.json();
-
-        allJobs = data.jobs || [];
-
-        // API zero result
-        if (allJobs.length === 0) {
-          resultsDiv.innerHTML =
-            '<p style="text-align:center;color:#f59e0b;">No jobs found for "' +
-            query + '". Try a different keyword.</p>';
-          return;
-        }
-
-        fillCompanyDropdown(allJobs);
-        showJobs();
-
-      } catch (error) {
-        let message = '';
-        if (error.message.includes('Failed to fetch')) {
-          message = 'No internet connection. Please check your network and try again.';
-        } else {
-          message = 'Something went wrong. Please try again later.';
-        }
-        resultsDiv.innerHTML =
-          '<p style="text-align:center;color:red;">' + message + '</p>';
-      }
+        '<p style="text-align:center;color:#f59e0b;">No jobs found for "' +
+        query + '". Try a different keyword.</p>';
+      return;
     }
 
     fillCompanyDropdown(allJobs);
     showJobs();
 
-  }
-  catch (error) {
-    let message = '';
-
+  } catch (error) {
+    var message = '';
     if (error.message.includes('Failed to fetch')) {
       message = 'No internet connection. Please check your network and try again.';
+    } else if (error.message.includes('API Error')) {
+      message = 'The job server is having trouble right now. Please try again later.';
     } else {
       message = 'Something went wrong. Please try again later.';
     }
@@ -137,6 +93,16 @@ async function searchJobs() {
       '<p style="text-align:center;color:red;">' + message + '</p>';
   }
 }
+
+function searchByCategory(category) {
+  var searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.value = category;
+    showPage('jobs');
+    searchJobs();
+  }
+}
+
 // ================= COMPANY FILTER =================
 function fillCompanyDropdown(jobs) {
   var companySelect = document.getElementById('companyFilter');
