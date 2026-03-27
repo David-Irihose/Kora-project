@@ -204,9 +204,11 @@ function showJobs() {
   }
 }
 
-// ================= CONTACT =================
+// ================= CONTACT Part=================
+
 function submitContact(e) {
-  e.preventDefault();
-  document.querySelector('.contact-form').style.display = 'none';
-  document.getElementById('contactConfirm').style.display = 'block';
-}
+   e.preventDefault();
+   document.querySelector('.contact-form').style.display = 'none';
+   document.getElementById('contactConfirm').style.display = 'block';
+
+  }
