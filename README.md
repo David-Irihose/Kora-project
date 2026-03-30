@@ -1,4 +1,4 @@
-# Kora - Remote Jobs Simplified
+# Kora - Remote Jobs 
 
 A real-time remote job search application built with pure HTML, CSS, and JavaScript. This platform connects users to the latest remote work opportunities worldwide, sourced directly from the Remotive API.
 
