@@ -6,9 +6,9 @@ A real-time remote job search application built with pure HTML, CSS, and JavaScr
 ---
 [Link to the video:](https://www.loom.com/share/66fd8738b60b4c45a463d161df11fcb7) (https://www.loom.com/share/66fd8738b60b4c45a463d161df11fcb7)
 
-The video demonstrates how the application works and looks, including remote job search functionality, real-time API filtering,  design, and layout.
+The video demonstrates how the application works and looks, including remote job search functionality, real-time API integration, filtering options, and the responsive layout.
 
-It highlights how users can efficiently find remote work opportunities and structured interface.
+It highlights how users can efficiently find remote work opportunities through an intuitive and structured interface. The demo also showcases the application's clean design and seamless navigation.
 
 ## Features
 
@@ -44,11 +44,65 @@ This API was chosen because it is free, reliable, and provides comprehensive job
 -   `style.css`: The styling logic for the entire application.
 -   `script.js`: Handles navigation, API integration, and search/filter logic.
 
-## How to Run
+## How to Run Locally
 
-1.  Clone this repository.
-2.  Open `index.html` in any modern web browser.
-3.  Type a job role (e.g., "Developer") or click a category tag to start browsing!
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/David-Irihose/Kora-project.git
+   ```
+
+2. **Navigate into the project folder**:
+   ```bash
+   cd Kora-project
+   ```
+
+3. **Open index.html in your browser**:
+   - Double click `index.html` OR
+   - Use **Live Server** extension in VS Code.
+
+4. **Start Searching**:
+   - Type a job role (e.g., "Frontend Developer", "Data Analyst") or click a category tag to search live jobs!
+
+> [!NOTE]
+> No API key is needed. The Remotive API is completely free and publicly accessible, so you'll just need an internet connection to fetch the live job data.
+
+## Deployment
+
+This application is deployed on two web servers behind 
+a load balancer using Nginx.
+
+### Architecture
+- **Web Server 1 (web-01):** Serves the application
+- **Web Server 2 (web-02):** Serves the application  
+- **Load Balancer (lb-01):** Distributes traffic between 
+  both servers using Round Robin algorithm
+
+### Web Server Setup (Web01 & Web02)
+
+1. **Clone the repository on each server**:
+   ```bash
+   git clone https://github.com/David-Irihose/Kora-project.git
+   ```
+
+2. **Copy files to Nginx web root**:
+   ```bash
+   sudo rm -rf /var/www/html/*
+   sudo cp -r Kora-project/* /var/www/html/
+   ```
+
+3. **Set correct permissions**:
+   ```bash
+   sudo chmod 644 /var/www/html/*
+   sudo chmod 755 /var/www/html/
+   ```
+
+4. **Restart Nginx**:
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Load Balancer Configuration
+The load balancer uses Nginx as a reverse proxy to distribute traffic between Web01 and Web02.
 
 ## Learning Purpose
 
