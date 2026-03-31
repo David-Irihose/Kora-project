@@ -4,11 +4,11 @@ A real-time remote job search application built with pure HTML, CSS, and JavaScr
 
 ## Demo video
 ---
-[Link to the video:](https://www.loom.com/share/66fd8738b60b4c45a463d161df11fcb7)
+[Link to the video:](https://www.loom.com/share/66fd8738b60b4c45a463d161df11fcb7) (https://www.loom.com/share/66fd8738b60b4c45a463d161df11fcb7)
 
-The video demonstrates how the application works and looks, including remote job search functionality, real-time API filtering, responsive design, and professional layout.
+The video demonstrates how the application works and looks, including remote job search functionality, real-time API filtering,  design, and layout.
 
-It highlights how users can efficiently find remote work opportunities through an intuitive and structured interface. The demo also showcases the application's clean aesthetic and seamless navigation.
+It highlights how users can efficiently find remote work opportunities and structured interface.
 
 ## Features
 
